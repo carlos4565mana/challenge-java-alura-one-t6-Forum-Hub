@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.challenge-alura-one-t6</groupId>
-	<artifactId>AluraForum</artifactId>
+	<artifactId>ForumHub</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>AluraForum</name>
+	<name>ForumHub</name>
 	<description>Projeto desafio alura-one-oracle</description>
 	<url/>
 	<licenses>
