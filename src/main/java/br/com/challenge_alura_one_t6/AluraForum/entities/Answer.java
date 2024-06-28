@@ -16,9 +16,9 @@ public class Answer {
     private LocalDateTime createdAt = LocalDateTime.now();
     private boolean solved = false;
 
-    private Topic topic;
+    //private Topic topic;
 
-    private User author;
+    //private User author;
 
 }
 

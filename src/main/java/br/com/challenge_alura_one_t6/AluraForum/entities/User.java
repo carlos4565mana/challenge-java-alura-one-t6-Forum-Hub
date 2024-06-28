@@ -3,13 +3,14 @@ package br.com.challenge_alura_one_t6.AluraForum.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "users")
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +24,9 @@ public class User {
 
 
     public User(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+
     }
 }
