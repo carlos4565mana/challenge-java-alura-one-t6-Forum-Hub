@@ -27,4 +27,11 @@ public class TopicController {
     public TopicPageDto findAllTopic(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int pageSize){
         return topicService.findAllTopic(page, pageSize);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void deleteTopic(@PathVariable Long id){
+        topicService.deleteTopicById(id);
+
+    }
 }

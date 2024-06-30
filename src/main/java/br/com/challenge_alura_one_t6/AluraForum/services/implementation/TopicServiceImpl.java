@@ -5,6 +5,7 @@ import br.com.challenge_alura_one_t6.AluraForum.dtos.TopicPageDto;
 import br.com.challenge_alura_one_t6.AluraForum.entities.Course;
 import br.com.challenge_alura_one_t6.AluraForum.entities.Topic;
 import br.com.challenge_alura_one_t6.AluraForum.entities.User;
+import br.com.challenge_alura_one_t6.AluraForum.exception.RecordNotFoundException;
 import br.com.challenge_alura_one_t6.AluraForum.repositories.CourseRepository;
 import br.com.challenge_alura_one_t6.AluraForum.repositories.TopicRepository;
 import br.com.challenge_alura_one_t6.AluraForum.repositories.UserRepository;
@@ -54,6 +55,13 @@ public class TopicServiceImpl implements TopicService {
                 .map(Topic::getTopicDto)
                 .collect(Collectors.toList());
         return new TopicPageDto(list, topicPage.getTotalElements(), topicPage.getTotalPages());
+    }
+
+    @Override
+    public void deleteTopicById(Long id) {
+        topicRepository.delete(topicRepository.findById(id)
+                .orElseThrow(()->new RecordNotFoundException(id)));
+
     }
 }
 

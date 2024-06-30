@@ -9,4 +9,6 @@ public interface TopicService {
     TopicDto addTopic(TopicDto topicDto);
 
     TopicPageDto findAllTopic(int page, int pageSize);
+
+    void deleteTopicById(Long id);
 }
