@@ -1,6 +1,7 @@
 package br.com.challenge_alura_one_t6.AluraForum.services.implementation;
 
 import br.com.challenge_alura_one_t6.AluraForum.dtos.TopicDto;
+import br.com.challenge_alura_one_t6.AluraForum.dtos.TopicPageDto;
 import br.com.challenge_alura_one_t6.AluraForum.entities.Course;
 import br.com.challenge_alura_one_t6.AluraForum.entities.Topic;
 import br.com.challenge_alura_one_t6.AluraForum.entities.User;
@@ -8,10 +9,14 @@ import br.com.challenge_alura_one_t6.AluraForum.repositories.CourseRepository;
 import br.com.challenge_alura_one_t6.AluraForum.repositories.TopicRepository;
 import br.com.challenge_alura_one_t6.AluraForum.repositories.UserRepository;
 import br.com.challenge_alura_one_t6.AluraForum.services.interfaces.TopicService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TopicServiceImpl implements TopicService {
@@ -27,7 +32,7 @@ public class TopicServiceImpl implements TopicService {
 
     @Override
     public TopicDto addTopic(TopicDto topicDto) {
-        Optional<User> optionalUser = userRepository.findById(topicDto.userId());
+        /*Optional<User> optionalUser = userRepository.findById(topicDto.userId());
         Optional<Course> optionalCourse = courseRepository.findById(topicDto.courseId());
         if(optionalUser.isPresent() && optionalCourse.isPresent()){
             var createdTopic = new Topic();
@@ -38,7 +43,25 @@ public class TopicServiceImpl implements TopicService {
             createdTopic.setCreatedAt(LocalDateTime.now());
             var cretedTopic = this.topicRepository.save(createdTopic);
 
-        }
+        }*/
         return null;
     }
+
+    @Override
+    public TopicPageDto findAllTopic(int page, int pageSize) {
+        Page<Topic> topicPage = topicRepository.findAll(PageRequest.of(page, pageSize));
+        List<TopicDto> list =topicPage.getContent().stream()
+                .map(Topic::getTopicDto)
+                .collect(Collectors.toList());
+        return new TopicPageDto(list, topicPage.getTotalElements(), topicPage.getTotalPages());
+    }
 }
+
+
+
+
+
+
+
+
+

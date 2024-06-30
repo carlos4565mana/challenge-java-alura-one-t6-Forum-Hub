@@ -1,5 +1,6 @@
 package br.com.challenge_alura_one_t6.AluraForum.entities;
 
+import br.com.challenge_alura_one_t6.AluraForum.dtos.TopicDto;
 import br.com.challenge_alura_one_t6.AluraForum.enuns.TopicStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -36,8 +37,20 @@ public class Topic {
     @JsonIgnore
     private Course course;
 
-    //@OneToMany(mappedBy = "topic")
-    //private List<Answer> answers = new ArrayList<>();
+    public TopicDto getTopicDto() {
+        TopicDto topicDto = new TopicDto();
+        topicDto.setId(id);
+        topicDto.setTitle(title);
+        topicDto.setCreatedAt(createdAt);
+        topicDto.setMessage(message);
+        topicDto.setStatus(status);
+        //topicDto.setAuthorName(user.getName());
+
+        return topicDto;
+
+    }
+
+
 
 
 }
