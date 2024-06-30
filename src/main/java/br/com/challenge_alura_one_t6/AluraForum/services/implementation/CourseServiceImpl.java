@@ -1,12 +1,13 @@
-package br.com.challenge_alura_one_t6.AluraForum.services;
+package br.com.challenge_alura_one_t6.AluraForum.services.implementation;
 
 import br.com.challenge_alura_one_t6.AluraForum.dtos.CourseDto;
 import br.com.challenge_alura_one_t6.AluraForum.entities.Course;
 import br.com.challenge_alura_one_t6.AluraForum.repositories.CourseRepository;
+import br.com.challenge_alura_one_t6.AluraForum.services.interfaces.CourseService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CourseServiceImpl implements  CourseService{
+public class CourseServiceImpl implements CourseService {
     private final CourseRepository courseRepository;
 
     public CourseServiceImpl(CourseRepository courseRepository) {

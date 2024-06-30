@@ -1,4 +1,4 @@
-package br.com.challenge_alura_one_t6.AluraForum.services;
+package br.com.challenge_alura_one_t6.AluraForum.services.implementation;
 
 import br.com.challenge_alura_one_t6.AluraForum.dtos.TopicDto;
 import br.com.challenge_alura_one_t6.AluraForum.entities.Course;
@@ -7,13 +7,14 @@ import br.com.challenge_alura_one_t6.AluraForum.entities.User;
 import br.com.challenge_alura_one_t6.AluraForum.repositories.CourseRepository;
 import br.com.challenge_alura_one_t6.AluraForum.repositories.TopicRepository;
 import br.com.challenge_alura_one_t6.AluraForum.repositories.UserRepository;
+import br.com.challenge_alura_one_t6.AluraForum.services.interfaces.TopicService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
-public class TopicServiceImpl implements TopicService{
+public class TopicServiceImpl implements TopicService {
     private final TopicRepository topicRepository;
     private final UserRepository userRepository;
     private final CourseRepository courseRepository;

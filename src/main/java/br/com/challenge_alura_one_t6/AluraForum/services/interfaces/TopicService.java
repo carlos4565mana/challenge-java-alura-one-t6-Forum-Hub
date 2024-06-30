@@ -1,4 +1,4 @@
-package br.com.challenge_alura_one_t6.AluraForum.services;
+package br.com.challenge_alura_one_t6.AluraForum.services.interfaces;
 
 import br.com.challenge_alura_one_t6.AluraForum.dtos.TopicDto;
 import org.springframework.stereotype.Service;
