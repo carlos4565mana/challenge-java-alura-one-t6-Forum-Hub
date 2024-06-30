@@ -2,9 +2,11 @@ package br.com.challenge_alura_one_t6.AluraForum.services.implementation;
 
 import br.com.challenge_alura_one_t6.AluraForum.dtos.TopicDto;
 import br.com.challenge_alura_one_t6.AluraForum.dtos.TopicPageDto;
+import br.com.challenge_alura_one_t6.AluraForum.dtos.TopicRequestDto;
 import br.com.challenge_alura_one_t6.AluraForum.entities.Course;
 import br.com.challenge_alura_one_t6.AluraForum.entities.Topic;
 import br.com.challenge_alura_one_t6.AluraForum.entities.User;
+import br.com.challenge_alura_one_t6.AluraForum.enuns.TopicStatus;
 import br.com.challenge_alura_one_t6.AluraForum.exception.RecordNotFoundException;
 import br.com.challenge_alura_one_t6.AluraForum.repositories.CourseRepository;
 import br.com.challenge_alura_one_t6.AluraForum.repositories.TopicRepository;
@@ -62,6 +64,18 @@ public class TopicServiceImpl implements TopicService {
         topicRepository.delete(topicRepository.findById(id)
                 .orElseThrow(()->new RecordNotFoundException(id)));
 
+    }
+
+    @Override
+    public TopicDto upadateTopic(Long id, TopicRequestDto topic) {
+        return topicRepository.findById(id).map(
+                actual -> {
+                    actual.setMessage(topic.getMessage());
+                    actual.setTitle(topic.getTitle());
+                    //actual.setStatus(topic.getStatus());
+                    return topicRepository.save(actual);
+                }
+        ).orElseThrow(() -> new RecordNotFoundException(id)).getTopicDto();
     }
 }
 

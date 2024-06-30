@@ -2,6 +2,7 @@ package br.com.challenge_alura_one_t6.AluraForum.controllers;
 
 import br.com.challenge_alura_one_t6.AluraForum.dtos.TopicDto;
 import br.com.challenge_alura_one_t6.AluraForum.dtos.TopicPageDto;
+import br.com.challenge_alura_one_t6.AluraForum.dtos.TopicRequestDto;
 import br.com.challenge_alura_one_t6.AluraForum.services.interfaces.TopicService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +33,12 @@ public class TopicController {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteTopic(@PathVariable Long id){
         topicService.deleteTopicById(id);
+
+    }
+
+    @PutMapping(value = "/{id}")
+    public TopicDto updateTopic(@PathVariable Long id, @RequestBody TopicRequestDto topic){
+        return topicService.upadateTopic(id, topic);
 
     }
 }

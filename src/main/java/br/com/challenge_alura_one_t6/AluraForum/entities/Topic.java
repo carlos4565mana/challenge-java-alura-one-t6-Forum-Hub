@@ -1,14 +1,16 @@
 package br.com.challenge_alura_one_t6.AluraForum.entities;
 
-import br.com.challenge_alura_one_t6.AluraForum.dtos.TopicDto;
 import br.com.challenge_alura_one_t6.AluraForum.enuns.TopicStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.event.internal.DefaultUpdateEventListener;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -37,20 +39,8 @@ public class Topic {
     @JsonIgnore
     private Course course;
 
-    public TopicDto getTopicDto() {
-        TopicDto topicDto = new TopicDto();
-        topicDto.setId(id);
-        topicDto.setTitle(title);
-        topicDto.setCreatedAt(createdAt);
-        topicDto.setMessage(message);
-        topicDto.setStatus(status);
-        //topicDto.setAuthorName(user.getName());
-
-        return topicDto;
-
-    }
-
-
+    //@OneToMany(mappedBy = "topic")
+    //private List<Answer> answers = new ArrayList<>();
 
 
 }
